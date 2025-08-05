@@ -1,0 +1,18 @@
+{
+  "name": "quantra",
+  "version": "1.0.0",
+  "description": "Quantra - Smart Accounting for Hospitals",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "vite": "^7.0.4",
+    "vue": "^3.5.17"
+  }
+}
