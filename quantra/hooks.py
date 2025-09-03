@@ -4,10 +4,13 @@ app_publisher = "CodeQuant"
 app_description = "Quantra - Smart Accounting for Hospitals"
 app_email = "2dsooraz@gmail.com"
 app_license = "mit"
-# for dynamic sidebar
-# boot_session = ["quantra.api.sidebar.load_sidebar"]
 
-# boot_session = "quantra.api.filter_workspaces"
+doc_events = {
+    "*": {
+        "validate": "quantra.api.license_manager_details.validate_module_access"
+    }
+}
+
 app_include_js = [
 "/assets/quantra/js/quantra-login.js",
 "/assets/quantra/js/quantra-dashboard.js",

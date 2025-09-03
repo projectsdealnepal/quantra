@@ -36,12 +36,6 @@
    "label": "is_group"
   },
   {
-   "fieldname": "role",
-   "fieldtype": "Link",
-   "label": "role",
-   "options": "Role"
-  },
-  {
    "fieldname": "lft",
    "fieldtype": "Int",
    "hidden": 1,
@@ -56,12 +50,6 @@
    "label": "Right",
    "no_copy": 1,
    "read_only": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_group",
-   "fieldtype": "Check",
-   "label": "is_group"
   },
   {
    "fieldname": "old_parent",
