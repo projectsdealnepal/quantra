@@ -1,0 +1,21 @@
+[
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Insert",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2025-09-04 16:23:55.296403",
+  "module": null,
+  "name": "Customer Patient Linkage",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Customer",
+  "script": "if doc.customer:\r\n    # Ensure reverse link from Customer -> Patient\r\n    frappe.db.set_value(\"Customer\", doc.customer, \"patient\", doc.name)\r\n    frappe.db.commit()\r\n",
+  "script_type": "DocType Event"
+ }
+]

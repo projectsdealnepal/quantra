@@ -11,6 +11,15 @@ doc_events = {
     }
 }
 
+fixtures = [
+    {"dt": "DocType", "filters": [["custom", "=", 1]]},
+    {"dt": "Custom Field"},
+    {"dt": "Property Setter"},
+    {"dt": "Client Script"},
+    {"dt": "Server Script"}
+]
+
+
 app_include_js = [
 "/assets/quantra/js/quantra-login.js",
 "/assets/quantra/js/quantra-dashboard.js",
