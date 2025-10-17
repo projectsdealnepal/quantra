@@ -51,9 +51,23 @@ def custom_login():
 
     # home_page = get_home_page()
 
+    is_reset_required = frappe.db.get_value(
+        "User Date Settings",
+        {"user": usr},
+        "is_reset_password_required"
+    )
+
+    if is_reset_required:
+        return {
+            "message": "Please reset your password first.",
+            "user": usr,
+            "reset_required": True,
+        }
+
     return {
         "message": "Logged in successfully.",
         "user": usr,
         "allowed_apps": allowed_apps,
-        # "role_profile": role_profile
+        # "role_profile": role_profile,
+        "reset_required": False
     }

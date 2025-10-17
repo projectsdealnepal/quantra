@@ -8,6 +8,9 @@ app_license = "mit"
 doc_events = {
     "*": {
         "validate": "quantra.api.license_manager_details.validate_module_access"
+    },
+    "Company": {
+        "on_update": "quantra.api.cloud_server_setup.check_company_custom_fields"
     }
 }
 

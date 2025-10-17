@@ -1,6 +1,6 @@
 import json
 from frappe import handler, local, api
-from quantra.utils.api_wrapper import enrich_dates
+from quantra.utils.api_wrapper import enrich_dates, process_incoming_dates
 
 # Store originals
 original_handle_method = handler.handle
@@ -25,9 +25,17 @@ def enrich_response():
     #     print("Could not print response:", e)
 
 def patched_method_handle(*args, **kwargs):
-    # req = getattr(local, "request", None)
-    # if req:
-    #     print(f"[METHOD] API Wrapper Hit! Method: {req.method}, Path: {req.path}")
+    req = getattr(local, "request", None)
+
+    if req and req.method in ["POST", "PUT", "PATCH"]:
+        try:
+            data = req.get_json(silent=True)
+            if data:
+                new_data = process_incoming_dates(data)
+                req._cached_json = new_data
+        except Exception as e:
+            print("Incoming date conversion failed:", e)
+
     result = original_handle_method(*args, **kwargs)
     enrich_response()
     return result

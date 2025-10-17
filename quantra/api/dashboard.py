@@ -141,3 +141,25 @@ def get_department_revenue():
         row["department_name"] = frappe.db.get_value("Cost Center", row["cost_center"], "cost_center_name")
 
     return results
+
+@frappe.whitelist()
+def get_low_medication_stock_data(threshold=10):
+    threshold = int(threshold)
+
+    results = frappe.db.sql("""
+        SELECT
+            *
+        FROM
+            `tabBin`
+        WHERE
+            actual_qty < %s
+        ORDER BY actual_qty ASC
+    """, (threshold,), as_dict=True)
+
+    # for row in results:
+    #     row["item_name"] = frappe.db.get_value("Item", row["item_code"], "item_name")
+
+    return {
+        "count": len(results),
+        "items": results
+    }
